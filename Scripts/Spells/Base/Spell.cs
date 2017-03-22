@@ -43,7 +43,7 @@ namespace Server.Spells
 
         public virtual bool DelayedDamageStacking { get { return true; } }
         //In reality, it's ANY delayed Damage spell Post-AoS that can't stack, but, only 
-        //Expo & Magic Arrow have enough delay and a short enough cast time to bring up 
+        //Expo, Magic Arrow & Nether Bolt have enough delay and a short enough cast time to bring up
         //the possibility of stacking 'em.  Note that a MA & an Explosion will stack, but
 		//of course, two MA's won't.
 
@@ -140,7 +140,7 @@ namespace Server.Spells
 			damageBonus += intBonus;
 
 			int sdiBonus = AosAttributes.GetValue( m_Caster, AosAttribute.SpellDamage );
-			// PvP spell damage increase cap of 15% from an item’s magic property
+			// PvP spell damage increase cap of 15% from an itemï¿½s magic property
 			if ( playerVsPlayer && sdiBonus > 15 )
 				sdiBonus = 15;
 
@@ -470,7 +470,7 @@ namespace Server.Spells
 			if ( m_Scroll is BaseWand )
 				return;
 
-			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && m_Caster.Player )
+			if ( !string.IsNullOrEmpty( m_Info.Mantra ) && m_Caster.Player )
 				m_Caster.PublicOverheadMessage( MessageType.Spell, m_Caster.SpeechHue, true, m_Info.Mantra, false );
 		}
 

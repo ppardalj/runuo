@@ -1449,35 +1449,8 @@ namespace Server.Network
 
 	public class ParticleEffect : Packet
 	{
-		public ParticleEffect( EffectType type, Serial from, Serial to, int itemID, Point3D fromPoint, Point3D toPoint, int speed, int duration, bool fixedDirection, bool explode, int hue, int renderMode, int effect, int explodeEffect, int explodeSound, Serial serial, int layer, int unknown ) : base( 0xC7, 49 )
-		{
-			m_Stream.Write( (byte) type );
-			m_Stream.Write( (int) from );
-			m_Stream.Write( (int) to );
-			m_Stream.Write( (short) itemID );
-			m_Stream.Write( (short) fromPoint.m_X );
-			m_Stream.Write( (short) fromPoint.m_Y );
-			m_Stream.Write( (sbyte) fromPoint.m_Z );
-			m_Stream.Write( (short) toPoint.m_X );
-			m_Stream.Write( (short) toPoint.m_Y );
-			m_Stream.Write( (sbyte) toPoint.m_Z );
-			m_Stream.Write( (byte) speed );
-			m_Stream.Write( (byte) duration );
-			m_Stream.Write( (byte) 0 );
-			m_Stream.Write( (byte) 0 );
-			m_Stream.Write( (bool) fixedDirection );
-			m_Stream.Write( (bool) explode );
-			m_Stream.Write( (int) hue );
-			m_Stream.Write( (int) renderMode );
-			m_Stream.Write( (short) effect );
-			m_Stream.Write( (short) explodeEffect );
-			m_Stream.Write( (short) explodeSound );
-			m_Stream.Write( (int) serial );
-			m_Stream.Write( (byte) layer );
-			m_Stream.Write( (short) unknown );
-		}
-
-		public ParticleEffect( EffectType type, Serial from, Serial to, int itemID, IPoint3D fromPoint, IPoint3D toPoint, int speed, int duration, bool fixedDirection, bool explode, int hue, int renderMode, int effect, int explodeEffect, int explodeSound, Serial serial, int layer, int unknown ) : base( 0xC7, 49 )
+		public ParticleEffect( EffectType type, Serial from, Serial to, int itemID, IPoint3D fromPoint, IPoint3D toPoint, int speed, int duration, bool fixedDirection, bool explode, int hue, int renderMode, int effect, int explodeEffect, int explodeSound, Serial serial, int layer, int unknown )
+			: base( 0xC7, 49 )
 		{
 			m_Stream.Write( (byte) type );
 			m_Stream.Write( (int) from );
@@ -1508,29 +1481,8 @@ namespace Server.Network
 
 	public class HuedEffect : Packet
 	{
-		public HuedEffect( EffectType type, Serial from, Serial to, int itemID, Point3D fromPoint, Point3D toPoint, int speed, int duration, bool fixedDirection, bool explode, int hue, int renderMode ) : base( 0xC0, 36 )
-		{
-			m_Stream.Write( (byte) type );
-			m_Stream.Write( (int) from );
-			m_Stream.Write( (int) to );
-			m_Stream.Write( (short) itemID );
-			m_Stream.Write( (short) fromPoint.m_X );
-			m_Stream.Write( (short) fromPoint.m_Y );
-			m_Stream.Write( (sbyte) fromPoint.m_Z );
-			m_Stream.Write( (short) toPoint.m_X );
-			m_Stream.Write( (short) toPoint.m_Y );
-			m_Stream.Write( (sbyte) toPoint.m_Z );
-			m_Stream.Write( (byte) speed );
-			m_Stream.Write( (byte) duration );
-			m_Stream.Write( (byte) 0 );
-			m_Stream.Write( (byte) 0 );
-			m_Stream.Write( (bool) fixedDirection );
-			m_Stream.Write( (bool) explode );
-			m_Stream.Write( (int) hue );
-			m_Stream.Write( (int) renderMode );
-		}
-
-		public HuedEffect( EffectType type, Serial from, Serial to, int itemID, IPoint3D fromPoint, IPoint3D toPoint, int speed, int duration, bool fixedDirection, bool explode, int hue, int renderMode ) : base( 0xC0, 36 )
+		public HuedEffect( EffectType type, Serial from, Serial to, int itemID, IPoint3D fromPoint, IPoint3D toPoint, int speed, int duration, bool fixedDirection, bool explode, int hue, int renderMode )
+			: base( 0xC0, 36 )
 		{
 			m_Stream.Write( (byte) type );
 			m_Stream.Write( (int) from );
@@ -1592,6 +1544,35 @@ namespace Server.Network
 	{
 		public MovingEffect( IEntity from, IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode ) : base( EffectType.Moving, from.Serial, to.Serial, itemID, from.Location, to.Location, speed, duration, fixedDirection, explodes, hue, renderMode )
 		{
+		}
+	}
+
+	public class GraphicalEffect : Packet
+	{
+		public GraphicalEffect( EffectType type, Serial from, Serial to, int itemID, Point3D fromPoint, Point3D toPoint, int speed, int duration, bool fixedDirection, bool explode )
+			: this( type, from, to, itemID, fromPoint, toPoint, speed, duration, fixedDirection, explode ? 1 : 0 )
+		{
+		}
+
+		public GraphicalEffect( EffectType type, Serial from, Serial to, int itemID, Point3D fromPoint, Point3D toPoint, int speed, int duration, bool fixedDirection, int explode )
+			: base( 0x70, 28 )
+		{
+			m_Stream.Write( (byte) type );
+			m_Stream.Write( (int) from );
+			m_Stream.Write( (int) to );
+			m_Stream.Write( (short) itemID );
+			m_Stream.Write( (short) fromPoint.X );
+			m_Stream.Write( (short) fromPoint.Y );
+			m_Stream.Write( (sbyte) fromPoint.Z );
+			m_Stream.Write( (short) toPoint.X );
+			m_Stream.Write( (short) toPoint.Y );
+			m_Stream.Write( (sbyte) toPoint.Z );
+			m_Stream.Write( (byte) speed );
+			m_Stream.Write( (byte) duration );
+			m_Stream.Write( (byte) 0 );
+			m_Stream.Write( (byte) 0 );
+			m_Stream.Write( (bool) fixedDirection );
+			m_Stream.Write( (byte) explode );
 		}
 	}
 

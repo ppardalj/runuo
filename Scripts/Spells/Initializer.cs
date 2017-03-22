@@ -166,7 +166,7 @@ namespace Server.Spells
 				if ( Core.SA )
 				{
 					// Mysticism spells
-					//Register( 677, typeof( Mysticism.NetherBoltSpell ) );
+					Register( 677, typeof( Mysticism.NetherBoltSpell ) );
 					//Register( 678, typeof( Mysticism.HealingStoneSpell ) );
 					//Register( 679, typeof( Mysticism.PurgeMagicSpell ) );
 					//Register( 680, typeof( Mysticism.EnchantSpell ) );
@@ -177,7 +177,7 @@ namespace Server.Spells
 					//Register( 685, typeof( Mysticism.SpellTriggerSpell ) );
 					//Register( 686, typeof( Mysticism.MassSleepSpell ) );
 					//Register( 687, typeof( Mysticism.CleansingWindsSpell ) );
-					//Register( 688, typeof( Mysticism.BombardSpell ) );
+					Register( 688, typeof( Mysticism.BombardSpell ) );
 					Register( 689, typeof( Mysticism.SpellPlagueSpell ) );
 					Register( 690, typeof( Mysticism.HailStormSpell ) );
 					Register( 691, typeof( Mysticism.NetherCycloneSpell ) );

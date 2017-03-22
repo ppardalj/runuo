@@ -1009,6 +1009,14 @@ namespace Server.Spells
 			}
 		}
 
+		public static void ChaosDamage( Spell spell, Mobile target, double damage )
+		{
+			var types = new int[4];
+			types[Utility.Random( types.Length )] = 100;
+
+			Damage( spell, target, damage, 0, types[0], types[1], types[2], types[3] );	//Chaos damage.  Random elemental damage
+		}
+
 		public static void Damage( Spell spell, Mobile target, double damage, int phys, int fire, int cold, int pois, int nrgy )
 		{
 			TimeSpan ts = GetDamageDelayForSpell( spell );

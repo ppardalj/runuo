@@ -58,10 +58,7 @@ namespace Server.Spells.Spellweaving
 					damage /= 100;
 				}
 
-				int[] types = new int[4];
-				types[Utility.Random( types.Length )] = 100;
-
-				SpellHelper.Damage( this, m, damage, 0, types[0], types[1], types[2], types[3] );	//Chaos damage.  Random elemental damage
+				SpellHelper.ChaosDamage( this, m, damage );
 			}
 
 			FinishSequence();

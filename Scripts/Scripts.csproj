@@ -3197,9 +3197,11 @@
     <Compile Include="Spells\Gargoyle\SpellDefinitions\FlySpell.cs" />
     <Compile Include="Spells\Initializer.cs" />
     <Compile Include="Spells\Mysticism\AnimatedWeaponSpell.cs" />
+    <Compile Include="Spells\Mysticism\BombardSpell.cs" />
     <Compile Include="Spells\Mysticism\EagleStrikeSpell.cs" />
     <Compile Include="Spells\Mysticism\HailStormSpell.cs" />
     <Compile Include="Spells\Mysticism\MysticSpell.cs" />
+    <Compile Include="Spells\Mysticism\NetherBoltSpell.cs" />
     <Compile Include="Spells\Mysticism\NetherCycloneSpell.cs" />
     <Compile Include="Spells\Mysticism\SpellPlagueSpell.cs" />
     <Compile Include="Spells\Mysticism\StoneFormSpell.cs" />
